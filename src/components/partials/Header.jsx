@@ -6,9 +6,10 @@ const Header = ({ data }) => {
   return (
     <div
       style={{
-        background: `linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1),rgba(0,0,0,.1)),url(https://image.tmdb.org/t/p/original/${
-          data.backdrop_path || data.profile_path || data.poster_path
-        })`,
+        background: `linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1),rgba(0,0,0,.1)),
+        url(https://image.tmdb.org/t/p/original/${
+            data.backdrop_path || data.profile_path || data.poster_path
+              })`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
