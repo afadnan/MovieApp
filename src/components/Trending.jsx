@@ -5,28 +5,33 @@ import Dropdown from "./partials/Dropdown";
 import axios from "../utils/axios";
 import Cards from "./partials/Cards";
 import Loading from "./Loading";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Trending = () => {
   const navigate = useNavigate();
   const [category, setcategory] = useState("all");
   const [duration, setduration] = useState("day");
   const [trending, settrending] = useState([]);
+  const [page, setpage] = useState(1);
   const GetTrending = async () => {
     try {
       const { data } = await axios.get(`/trending/${category}/${duration}`);
-      settrending(data.results);
+      //settrending(data.results);
+      settrending((prevState) => [...prevState, ...data.results]);
+      setpage(page + 1);
+      console.log(data);
     } catch (error) {
       console.log("Error: ", error);
     }
   };
-  console.log(trending);
+  //console.log(trending);
   useEffect(() => {
     GetTrending();
   }, [category, duration]);
 
-  return trending ? (
-    <div className=" py-[1%] px-[2%] w-screen h-screen overflow-hidden  overflow-y-auto ">
-      <div className="w-full flex items-center justify-between ">
+  return trending.length > 0 ? (
+    <div className="w-screen h-screen  ">
+      <div className="w-full flex items-center justify-between px-[4%] ">
         <h1 className=" text-2xl font-bold text-zinc-400">
           <i
             onClick={() => navigate(-1)}
@@ -46,13 +51,20 @@ const Trending = () => {
           <div className="w-[3%]"></div>
           <Dropdown
             title="Duration"
-            options={["day", "week", "month"]}
+            options={["day", "week"]}
             func={(e) => setduration(e.target.value)}
           />
         </div>
       </div>
 
-      <Cards data={trending} title={category} />
+      <InfiniteScroll
+        dataLength={trending.length}
+        next={GetTrending}
+        hasMore={true}
+        loader={<h1>Loading...</h1>}
+      >
+        <Cards data={trending} title={category} />
+      </InfiniteScroll>
     </div>
   ) : (
     <Loading />
