@@ -2,7 +2,7 @@ import axios from "../utils/axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "./Loading";
-import Cards from "./partials/Cards";``
+import Cards from "./partials/Cards";
 import Topnav from "./partials/Topnav";
 import Dropdown from "./partials/Dropdown";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -13,11 +13,12 @@ const Popular = () => {
   const [popular, setpopular] = useState([]);
   const [page, setpage] = useState(1);
   const [hasMore, sethasMore] = useState(true);
+   document.title = "Movie App | PopularPage | " + category.toLocaleUpperCase();
 
   const GetPopular = async () => {
     try {
       const { data } = await axios.get(`${category}/popular?page=${page}`);
-      console.log(data);
+      //console.log(data);
 
       if (data.results.length > 0) {
         setpopular((prevState) => [...prevState, ...data.results]);
@@ -52,7 +53,7 @@ const Popular = () => {
             onClick={() => navigate(-1)}
             className=" text-[#07e1f5]  hover:text-[#27a0ab] ri-arrow-left-line"
           ></i>
-          popular
+          Popular
         </h1>
 
         <div className="flex items-center w-[85%] mt-[3%]">
@@ -60,7 +61,7 @@ const Popular = () => {
 
           <Dropdown
             title="Category"
-            options={["movie", "tv", "all"]}
+            options={["movie", "tv"]}
             func={(e) => setcategory(e.target.value)}
           />
         </div>

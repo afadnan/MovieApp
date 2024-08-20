@@ -14,6 +14,7 @@ const Trending = () => {
   const [trending, settrending] = useState([]);
   const [page, setpage] = useState(1);
   const [hasMore, sethasMore] = useState(true);
+  document.title = "Movie App | TrendingPage | " + category.toLocaleUpperCase();
   const GetTrending = async () => {
     try {
       const { data } = await axios.get(
