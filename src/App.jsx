@@ -5,6 +5,7 @@ import Trending from "../src/components/Trending";
 import Popular from "./components/Popular";
 import Movie from "./components/Movie";
 import Tvshows from "./components/Tvshows";
+import Actor from "./components/Actor";
 function App() {
   return (
     <div className=" bg-[#1F1E24] w-screen h-screen flex ">
@@ -14,6 +15,7 @@ function App() {
         <Route path="/popular" element={<Popular />} />;
         <Route path="/movie" element={<Movie />} />;
         <Route path="/tv" element={<Tvshows />} />;
+        <Route path="/actor" element={<Actor />} />;
       </Routes>
     </div>
   );
