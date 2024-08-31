@@ -1,11 +1,16 @@
 import React from "react";
 import Dropdown from "./Dropdown";
+import { Link } from "react-router-dom";
 
 const HorizontalCards = ({ data }) => {
   return (
     <div className="w-[100%] h-[65vh] flex overflow-y-hidden">
       {data.map((d, i) => (
-        <div key={i} className="min-w-[18%] bg-zinc-900 mr-5 mb-5 ">
+        <Link
+          to={`/${d.media_type}/details/${d.id}`}
+          key={i}
+          className="min-w-[18%] bg-zinc-900 mr-5 mb-5 "
+        >
           <img
             className="w-full h-[45%] object-cover"
             src={`https://image.tmdb.org/t/p/original${
@@ -22,7 +27,7 @@ const HorizontalCards = ({ data }) => {
               <span className=" text-black text-zinc-500">more</span>
             </p>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
