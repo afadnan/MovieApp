@@ -8,6 +8,8 @@ const Moviedetails = () => {
   const { info } = useSelector((state) => state.movie);
   const { id } = useParams();
   const dispatch = useDispatch();
+  console.log(info);
+
   useEffect(() => {
     dispatch(asyncloadmovie(id));
     return () => {
@@ -25,18 +27,20 @@ const Moviedetails = () => {
       }}
       className="w-screen h-screen px-[10%]"
     >
-      <nav className="w-full">
+      <nav className="h-[10vh] items-center w-full text-zinc-100 flex gap-10 text-2xl">
         <Link
-          onclick={() => navigate(-1)}
-          className="hover:text-[#6556CD] ri-arrow-left-line"
+          onClick={() => navigate(-1)}
+          className=" hover:text-[#6556CD] ri-arrow-left-line"
         ></Link>
-        <a href="">
-          <i class="ri-earth-fill"></i>
+        <a target="_blank" href={`https://en.wikipedia.org/wiki/${info.externalid.wikidata_id}`}>
+          <i className="ri-earth-fill"></i>
         </a>
-        <a href="">
-          <i class="ri-home-4-fill"></i>
+        <a target="_blank" href={info.detail.homepage}>
+          <i className="ri-home-4-fill"></i>
         </a>
-        <a href="">imdb</a>
+        <a target="_blank" href={`https://www.imdb.com/title/${info.detail.imdb_id}`}>
+          imdb
+        </a>
       </nav>
     </div>
   ) : (
