@@ -59,6 +59,36 @@ const Moviedetails = () => {
           }`}
           alt=""
         />
+        <div className="content ml-[5%]">
+          <h1 className="text-5xl font-black text-white ">
+            {" "}
+            {info.detail.name ||
+              info.detail.title ||
+              info.detail.original_name ||
+              info.detail.original_title}
+            <small className="text-2xl font-bold text-zinc-100">
+              ({info.detail.release_date.split("-")[0]})
+            </small>
+          </h1>
+          <div className="mt-3 mb-10 flex text-zinc-100 items-center gap-x-5">
+            {info.detail.vote_average && (
+              <span
+                className="
+rounded-full text-xl font-semibold bg-[#f3c80b] text-white w-[5vh] h-[5vh] flex justify-center items-center "
+              >
+                {info.detail.vote_average !== undefined &&
+                info.detail.vote_average !== null
+                  ? info.detail.vote_average.toFixed(1)
+                  : "N/A"}
+              </span>
+            )}
+
+            <h1 className="w-[60px] font-semibold text-2xl lending-6">User Score</h1>
+            <h1>{info.detail.release_date}</h1>
+            <h1> {info.detail.genres.map((g) => g.name).join(",")} </h1>
+            <h1> {info.detail.runtime}min </h1>
+          </div>
+        </div>
       </div>
       {/* Part 3 Available on Platform */}
       <div className="w-[80%] flex flex-col gap-y-5 mt-10">
