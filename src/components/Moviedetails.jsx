@@ -27,21 +27,54 @@ const Moviedetails = () => {
       }}
       className="w-screen h-screen px-[10%]"
     >
+      {/* Part 1 navigation */}
       <nav className="h-[10vh] items-center w-full text-zinc-100 flex gap-10 text-2xl">
         <Link
           onClick={() => navigate(-1)}
           className=" hover:text-[#6556CD] ri-arrow-left-line"
         ></Link>
-        <a target="_blank" href={`https://en.wikipedia.org/wiki/${info.externalid.wikidata_id}`}>
+        <a
+          target="_blank"
+          href={`https://en.wikipedia.org/wiki/${info.externalid.wikidata_id}`}
+        >
           <i className="ri-earth-fill"></i>
         </a>
         <a target="_blank" href={info.detail.homepage}>
           <i className="ri-home-4-fill"></i>
         </a>
-        <a target="_blank" href={`https://www.imdb.com/title/${info.detail.imdb_id}`}>
+        <a
+          target="_blank"
+          href={`https://www.imdb.com/title/${info.detail.imdb_id}`}
+        >
           imdb
         </a>
       </nav>
+      {/* Part 1 Poster and details */}
+      <div className="w-full flex">
+        <div>
+          <img
+            className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)]  h-[40vh]object-cover"
+            src={`https://image.tmdb.org/t/p/original/${
+              info.detail.poster_path || info.detail.backdrop_path
+            }`}
+            alt=""
+          />
+          <div className="mt-5">
+            {info.watchproviders &&
+              info.watchproviders.flatrate &&
+              info.watchproviders.flatrate.map((w) => (
+                <img
+                  className="w-[5vh] h-[5vh] object-cover rounded-md"
+                  src={`https://image.tmdb.org/t/p/original/${w.logo_path}`}
+                  alt=""
+                />
+              ))}
+
+            
+          </div>
+
+        </div>
+      </div>
     </div>
   ) : (
     <Loading />
