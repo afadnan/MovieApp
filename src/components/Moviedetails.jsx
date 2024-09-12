@@ -51,7 +51,7 @@ const Moviedetails = () => {
       </nav>
 
       {/* Part 2 Poster and details */}
-      <div className="w-full h-[40%] flex">
+      <div className="w-full h-[60%] flex">
         <img
           className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)]  h-[40vh]object-cover"
           src={`https://image.tmdb.org/t/p/original/${
@@ -59,8 +59,8 @@ const Moviedetails = () => {
           }`}
           alt=""
         />
-        <div className="content ml-[5%]">
-          <h1 className="text-5xl font-black text-white ">
+        <div className="content ml-[5%] text-white ">
+          <h1 className="text-5xl font-black  ">
             {" "}
             {info.detail.name ||
               info.detail.title ||
@@ -70,7 +70,7 @@ const Moviedetails = () => {
               ({info.detail.release_date.split("-")[0]})
             </small>
           </h1>
-          <div className="mt-3 mb-10 flex text-zinc-100 items-center gap-x-5">
+          <div className="mt-3 mb-5 flex text-zinc-100 items-center gap-x-5">
             {info.detail.vote_average && (
               <span
                 className="
@@ -83,11 +83,20 @@ rounded-full text-xl font-semibold bg-[#f3c80b] text-white w-[5vh] h-[5vh] flex 
               </span>
             )}
 
-            <h1 className="w-[60px] font-semibold text-2xl lending-6">User Score</h1>
+            <h1 className="w-[60px] font-semibold text-2xl lending-6">
+              User Score
+            </h1>
             <h1>{info.detail.release_date}</h1>
             <h1> {info.detail.genres.map((g) => g.name).join(",")} </h1>
             <h1> {info.detail.runtime}min </h1>
           </div>
+          <h1 className="text-xl font-semibold italic text-zinc-200">
+            {info.detail.tagline}
+          </h1>
+          <h1 className="text-2xl mt-5 mb-5">Overview</h1>
+          <p>{info.detail.overview}</p>
+          <h1 className="text-2xl mt-5 mb-5 y-auto">Movie Translated</h1>
+          <p>{info.translations.join(" ")}</p>
         </div>
       </div>
       {/* Part 3 Available on Platform */}
