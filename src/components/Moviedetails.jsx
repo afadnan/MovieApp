@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import Loading from "./Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadmovie, removemovie } from "../store/actions/movieActions";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 const Moviedetails = () => {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const { info } = useSelector((state) => state.movie);
   const { id } = useParams();
@@ -70,7 +71,7 @@ const Moviedetails = () => {
               ({info.detail.release_date.split("-")[0]})
             </small>
           </h1>
-          <div className="mt-3 mb-5 flex text-zinc-100 items-center gap-x-5">
+          <div className="mt-3 mb-2 flex text-zinc-100 items-center gap-x-5">
             {info.detail.vote_average && (
               <span
                 className="
@@ -93,10 +94,15 @@ rounded-full text-xl font-semibold bg-[#f3c80b] text-white w-[5vh] h-[5vh] flex 
           <h1 className="text-xl font-semibold italic text-zinc-200">
             {info.detail.tagline}
           </h1>
-          <h1 className="text-2xl mt-5 mb-5">Overview</h1>
-          <p>{info.detail.overview}</p>
-          <h1 className="text-2xl mt-5 mb-5 y-auto">Movie Translated</h1>
-          <p>{info.translations.join(" ")}</p>
+          <h1 className="text-2xl mt-2 mb-8">Overview</h1>
+          <p className="mb-10">{info.detail.overview}</p>
+
+          <Link
+            className="p-5 bg-[#0BE0F3] text-black font-bold rounded-lg"
+            to={`${pathname}/trailer`}
+          >
+            <i class="ri-play-fill mr-3"></i> Play Trailer
+          </Link>
         </div>
       </div>
       {/* Part 3 Available on Platform */}
