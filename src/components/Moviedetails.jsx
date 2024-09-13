@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Loading from "./Loading";
+import HorizontalCards from "./partials/HorizontalCards";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadmovie, removemovie } from "../store/actions/movieActions";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
@@ -16,7 +17,7 @@ const Moviedetails = () => {
     return () => {
       dispatch(removemovie());
     };
-  }, []);
+  }, [id]);
   return info ? (
     <div
       style={{
@@ -26,7 +27,7 @@ const Moviedetails = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-screen h-screen px-[10%]"
+      className="w-screen h-[165vh] px-[10%]"
     >
       {/* Part 1 navigation */}
       <nav className="h-[10vh] items-center w-full text-zinc-100 flex gap-10 text-2xl">
@@ -52,7 +53,7 @@ const Moviedetails = () => {
       </nav>
 
       {/* Part 2 Poster and details */}
-      <div className="w-full h-[60%] flex">
+      <div className="w-full h-[30%] flex">
         <img
           className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)]  h-[40vh]object-cover"
           src={`https://image.tmdb.org/t/p/original/${
@@ -108,7 +109,7 @@ rounded-full text-xl font-semibold bg-[#f3c80b] text-white w-[5vh] h-[5vh] flex 
       {/* Part 3 Available on Platform */}
       <div className="w-[80%] flex flex-col gap-y-5 mt-10">
         {info.watchproviders && info.watchproviders.flatrate && (
-          <div className="flex gap-x-10 item-center text-white">
+          <div className="mt-5 flex gap-x-10 item-center text-white">
             <h1>Available on Platforms</h1>
             {info.watchproviders.flatrate.map((w) => (
               <img
@@ -122,7 +123,7 @@ rounded-full text-xl font-semibold bg-[#f3c80b] text-white w-[5vh] h-[5vh] flex 
         )}
 
         {info.watchproviders && info.watchproviders.rent && (
-          <div className="flex gap-x-10 item-center text-white">
+          <div className="flex mt-5 gap-x-10 item-center text-white">
             <h1>Available on Rent</h1>
             {info.watchproviders.rent.map((w) => (
               <img
@@ -136,7 +137,7 @@ rounded-full text-xl font-semibold bg-[#f3c80b] text-white w-[5vh] h-[5vh] flex 
         )}
 
         {info.watchproviders && info.watchproviders.buy && (
-          <div className="flex gap-x-10 item-center text-white">
+          <div className="flex mb-8 mt-5 gap-x-10 item-center text-white">
             <h1>Available to Buy</h1>
             {info.watchproviders.buy.map((w) => (
               <img
@@ -149,6 +150,18 @@ rounded-full text-xl font-semibold bg-[#f3c80b] text-white w-[5vh] h-[5vh] flex 
           </div>
         )}
       </div>
+      {/* Part 4 Recommendation and Similar stuff*/}
+      <hr className="mt-4 mb-4 border-none h-[2px] bg-zinc-500" />
+
+      <h1 className="mt-4 mb-4 text-3xl font-bold text-white">
+        Recommendation & Similar Stuff
+      </h1>
+      <HorizontalCards
+        className="mt-10"
+        data={
+          info.recommendations.length > 0 ? info.recommendations : info.similar
+        }
+      />
     </div>
   ) : (
     <Loading />
