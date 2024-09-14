@@ -151,7 +151,7 @@ rounded-full text-xl font-semibold bg-[#f3c80b] text-white w-[5vh] h-[5vh] flex 
         )}
       </div>
       {/* Part 4 Recommendation and Similar stuff*/}
-      <hr className="mt-4 mb-4 border-none h-[2px] bg-zinc-500" />
+      <hr className="mt-9 mb-4 border-none h-[2px] bg-zinc-500" />
 
       <h1 className="mt-4 mb-4 text-3xl font-bold text-white">
         Recommendation & Similar Stuff
