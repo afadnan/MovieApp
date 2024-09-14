@@ -3,7 +3,7 @@ import Loading from "./Loading";
 import HorizontalCards from "./partials/HorizontalCards";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadmovie, removemovie } from "../store/actions/movieActions";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 const Moviedetails = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -162,7 +162,7 @@ rounded-full text-xl font-semibold bg-[#f3c80b] text-white w-[5vh] h-[5vh] flex 
           info.recommendations.length > 0 ? info.recommendations : info.similar
         }
       />
-      <outlet/>
+      <Outlet/>
     </div>
   ) : (
     <Loading />
