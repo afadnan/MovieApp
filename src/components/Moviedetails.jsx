@@ -27,7 +27,7 @@ const Moviedetails = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-screen h-[165vh] px-[10%]"
+      className="relative w-screen h-[165vh] px-[10%]"
     >
       {/* Part 1 navigation */}
       <nav className="h-[10vh] items-center w-full text-zinc-100 flex gap-10 text-2xl">
@@ -162,6 +162,7 @@ rounded-full text-xl font-semibold bg-[#f3c80b] text-white w-[5vh] h-[5vh] flex 
           info.recommendations.length > 0 ? info.recommendations : info.similar
         }
       />
+      <outlet/>
     </div>
   ) : (
     <Loading />
