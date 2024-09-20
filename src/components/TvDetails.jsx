@@ -28,7 +28,7 @@ const TvDetails = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="relative w-screen h-[165vh] px-[10%]"
+      className="relative w-screen h-[1700px] px-[10%]"
     >
       {/* Part 1 navigation */}
       <nav className="h-[10vh] items-center w-full text-zinc-100 flex gap-10 text-2xl">
@@ -154,7 +154,31 @@ rounded-full text-xl font-semibold bg-[#f3c80b] text-white w-[5vh] h-[5vh] flex 
           </div>
         )}
       </div>
-      {/* Part 4 Recommendation and Similar stuff*/}
+
+      {/* Part 4 seasons and episodes*/}
+      <hr className="mt-9 mb-4 border-none h-[2px] bg-zinc-500" />
+
+      <h1 className="mt-4 mb-4 text-3xl font-bold text-white">
+        Seasons
+      </h1>
+      <div className="w-[100%] mb-2 h-[62vh] flex overflow-y-hidden">
+        {info.detail.seasons.map((s,i)=> (
+          <div className= "mr-[3%]">
+          <img
+          className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] h-[50vh] object-cover"
+          src={`https://image.tmdb.org/t/p/original/${s.poster_path
+          }`}
+          alt=""
+        />
+        <h1 className="w-[30vh] text-xl text-zinc-300 mt-2 font-semibold">
+          {s.name || s.title || s.original_name || s.original_title}
+        </h1>
+        </div>
+        ))}
+     
+
+      </div>
+      {/* Part 5 Recommendation and Similar stuff*/}
       <hr className="mt-9 mb-4 border-none h-[2px] bg-zinc-500" />
 
       <h1 className="mt-4 mb-4 text-3xl font-bold text-white">
