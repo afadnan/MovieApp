@@ -19,7 +19,7 @@ const PersonDetails = () => {
       dispatch(removeperson());
     };
   }, [id]);
-  return info ? <div className="px-[15%] w-screen">
+  return info ? <div className="px-[15%] h-[150vh] w-screen bg-[#1F1E24]">
     {/* Part 1 navigation */}
   <nav className="items-center mt-5 mb-5 w-full text-zinc-100 flex gap-10 text-2xl">
     <Link
@@ -39,6 +39,7 @@ const PersonDetails = () => {
           alt=""
         />
         <hr className="mt-10 mb-5 border-none h-[2px] bg-zinc-500" />
+        {/* Social Media Links */}
         <div className="text-2xl text-white flex gap-x-5">
         <a
       target="_blank"
@@ -66,6 +67,18 @@ const PersonDetails = () => {
     </a>
 
         </div>
+        {/* Personal information */}
+        <h1 className="text-2xl text-zinc-400 font-semibold my-5">Person Info</h1>
+        <h1 className="text-lg text-zinc-400 font-semibold ">Known For</h1>
+        <h1 className="text-zinc-400 ">{info.detail.known_for_department}</h1>
+        <h1 className="text-lg text-zinc-400 font-semibold ">Gender</h1>
+        <h1 className="text-zinc-400 ">{info.detail.gender === 2 ? "Male" :"Female"}</h1>
+        <h1 className="text-lg text-zinc-400 font-semibold ">Birthday</h1>
+        <h1 className="text-zinc-400 ">{info.detail.birthday}</h1>
+        <h1 className="text-lg text-zinc-400 font-semibold ">Deathday</h1>
+        <h1 className="text-zinc-400 ">{info.detail.deathday ? info.detail.deathday : "Still Alive"}</h1>
+        <h1 className="text-lg text-zinc-400 font-semibold ">Place Of Birth</h1>
+        <h1 className="text-zinc-400 ">{info.detail.place_of_birth}</h1>
     </div>
     {/* Part 3 right Details and information */}
     <div className="w-[80%]"></div>
