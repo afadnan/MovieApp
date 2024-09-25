@@ -10,7 +10,7 @@ const Moviedetails = () => {
   const { info } = useSelector((state) => state.movie);
   const { id } = useParams();
   const dispatch = useDispatch();
-  console.log(info);
+  //console.log(info);
 
   useEffect(() => {
     dispatch(asyncloadmovie(id));
@@ -102,7 +102,7 @@ rounded-full text-xl font-semibold bg-[#f3c80b] text-white w-[5vh] h-[5vh] flex 
             className="p-5 bg-[#0BE0F3] text-black font-bold rounded-lg"
             to={`${pathname}/trailer`}
           >
-            <i class="ri-play-fill mr-3"></i> Play Trailer
+            <i className="ri-play-fill mr-3"></i> Play Trailer
           </Link>
         </div>
       </div>
