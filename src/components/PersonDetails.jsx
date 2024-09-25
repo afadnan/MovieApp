@@ -102,8 +102,8 @@ const PersonDetails = () => {
             <span>
               {c.name || c.title || c.original_name || c.original_title}
             </span>
-            <span className="block">
-              {c.character}
+            <span className="block ml-5">
+              {c.character && `character name: ${c.character}`}
             </span>
           </Link>
         </li>
