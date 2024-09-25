@@ -22,7 +22,7 @@ const PersonDetails = () => {
       dispatch(removeperson());
     };
   }, [id]);
-  return info ? <div className="px-[15%] h-[150vh] w-screen bg-[#1F1E24]">
+  return info ? <div className="px-[15%] h-[200vh] w-screen bg-[#1F1E24]">
     {/* Part 1 navigation */}
   <nav className="items-center mt-5 mb-5 w-full text-zinc-100 flex gap-10 text-2xl">
     <Link
@@ -89,9 +89,25 @@ const PersonDetails = () => {
         <h1 className="text-lg text-zinc-400 font-semibold ">Biography</h1>
         <p className="text-zinc-400 mt-3">{info.detail.biography}</p>
         
-      <div className="w-full mt-6 flex justify-between">
+      <div className="w-full mt-6 flex justify-between items-center">
         <h1 className=" text-xl text-zinc-400 font-semibold">Acting</h1>
         <Dropdown title="category" options={["tv", "movie"]} func={(e) => setcategory(e.target.value)} />
+      </div>
+
+
+      <div className="list-disc text-zinc-400 w-full h-[50vh] mt-10 overflow-x-hidden overflow-y-auto shadow-2xl shadow-[rgba(255,255,255,.3)] border-2 border-zinc-700 p-5">
+        {info[category + "Credits"].cast.map((c,i)=> (
+        <li key={i} className="hover:text-white p-5 hover:bg-[#19191d] duration-300 cursor-pointer">
+          <Link to={`/${category}/details/${c.id}`} className="">
+            <span>
+              {c.name || c.title || c.original_name || c.original_title}
+            </span>
+            <span className="block">
+              {c.character}
+            </span>
+          </Link>
+        </li>
+        ))}
       </div>
     </div>
   </div>
