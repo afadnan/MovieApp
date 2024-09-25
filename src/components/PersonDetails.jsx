@@ -28,7 +28,7 @@ const PersonDetails = () => {
     ></Link>
     
   </nav>
-  <div className="w-full flex flex-col">
+  <div className="w-full flex ">
     {/* Part 2 left Poster and Details  */}
     <div className="w-[20%]">
     <img
@@ -81,7 +81,13 @@ const PersonDetails = () => {
         <h1 className="text-zinc-400 ">{info.detail.place_of_birth}</h1>
     </div>
     {/* Part 3 right Details and information */}
-    <div className="w-[80%]"></div>
+    <div className="w-[80%] ml-[5%]">
+    <h1 className="text-5xl text-zinc-400 font-bold my-5">{info.detail.name}</h1>
+        <h1 className="text-lg text-zinc-400 font-semibold ">Biography</h1>
+        <p className="text-zinc-400 mt-3">{info.detail.biography}</p>
+        
+
+    </div>
   </div>
   </div>:( <Loading/>);
 };
