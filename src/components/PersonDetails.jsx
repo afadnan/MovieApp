@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import HorizontalCards from "./partials/HorizontalCards";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadperson, removeperson } from "../store/actions/personActions";
@@ -12,6 +12,8 @@ const PersonDetails = () => {
   const { info } = useSelector((state) => state.person);
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [category,setcategory ]=useState("movie");
+  
   console.log(info);
 
   useEffect(() => {
@@ -89,7 +91,7 @@ const PersonDetails = () => {
         
       <div className="w-full mt-6 flex justify-between">
         <h1 className=" text-xl text-zinc-400 font-semibold">Acting</h1>
-        <Dropdown title="category" options={["tv", "movie"]} />
+        <Dropdown title="category" options={["tv", "movie"]} func={(e) => setcategory(e.target.value)} />
       </div>
     </div>
   </div>
