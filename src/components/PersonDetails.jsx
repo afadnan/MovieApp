@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import Loading from "./Loading";
 import HorizontalCards from "./partials/HorizontalCards";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadperson, removeperson } from "../store/actions/personActions";
 import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
+import Dropdown from "./partials/Dropdown.jsx";
+import Loading from "./Loading.jsx"
 
 const PersonDetails = () => {
   const { pathname } = useLocation();
@@ -86,7 +87,10 @@ const PersonDetails = () => {
         <h1 className="text-lg text-zinc-400 font-semibold ">Biography</h1>
         <p className="text-zinc-400 mt-3">{info.detail.biography}</p>
         
-
+      <div className="w-full mt-6 flex justify-between">
+        <h1 className=" text-xl text-zinc-400 font-semibold">Acting</h1>
+        <Dropdown title="category" options={["tv", "movie"]} />
+      </div>
     </div>
   </div>
   </div>:( <Loading/>);
