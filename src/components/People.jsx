@@ -23,7 +23,7 @@ const People = () => {
       } else {
         sethasMore(false);
       }
-      console.log(data);
+      //console.log(data);
     } catch (error) {
       console.log("Error: ", error);
     }

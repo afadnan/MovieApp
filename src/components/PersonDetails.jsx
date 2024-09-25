@@ -14,7 +14,7 @@ const PersonDetails = () => {
   const dispatch = useDispatch();
   const [category,setcategory ]=useState("movie");
   
-  console.log(info);
+  //console.log(info);
 
   useEffect(() => {
     dispatch(asyncloadperson(id));

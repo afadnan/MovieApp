@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import noImage from "/noImage.jpg"
 const HorizontalCards = ({ data }) => {
   return (
-    <div className="w-[100%] h-[70vh] flex overflow-y-hidden">
+    <div className="w-[100%] h-[70vh] flex m-2 overflow-y-hidden">
       {data.length > 0 ? data.map((d, i) => (
         <Link
           to={`/${d.media_type}/details/${d.id}`}
