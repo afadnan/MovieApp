@@ -22,7 +22,7 @@ const PersonDetails = () => {
       dispatch(removeperson());
     };
   }, [id]);
-  return info ? <div className="px-[15%] h-[200vh] w-screen bg-[#1F1E24]">
+  return info ? <div className="px-[15%] h-[280vh] w-screen bg-[#1F1E24]">
     {/* Part 1 navigation */}
   <nav className="items-center mt-5 mb-5 w-full text-zinc-100 flex gap-10 text-2xl">
     <Link
@@ -89,6 +89,14 @@ const PersonDetails = () => {
         <h1 className="text-lg text-zinc-400 font-semibold ">Biography</h1>
         <p className="text-zinc-400 mt-3">{info.detail.biography}</p>
         
+        <h1 className="mt-5 text-2xl mb-3 text-zinc-400 font-bold">
+          Known For
+        </h1>
+        <HorizontalCards data={info.combinedCredits.cast} />
+
+
+
+
       <div className="w-full mt-6 flex justify-between items-center">
         <h1 className=" text-xl text-zinc-400 font-semibold">Acting</h1>
         <Dropdown title="category" options={["tv", "movie"]} func={(e) => setcategory(e.target.value)} />
@@ -102,8 +110,8 @@ const PersonDetails = () => {
             <span>
               {c.name || c.title || c.original_name || c.original_title}
             </span>
-            <span className="block ml-5">
-              {c.character && `character name: ${c.character}`}
+            <span className="block ml-5 mt-2">
+              {c.character && `Character Name: ${c.character}`}
             </span>
           </Link>
         </li>
