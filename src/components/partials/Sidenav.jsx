@@ -44,7 +44,9 @@ const Sidenav = () => {
         </nav>
         <hr className="border-none h-[1px] bg-zinc-400" />
 
-       
+        <nav className="flex flex-col text-zinc-400 text-xl gap-3">
+          <h1 className="text-white  text-xl m-1">Created by <a href="https://x.com/Adna_n16">Adnan</a></h1>
+          </nav>
 
 
 
