@@ -43,7 +43,14 @@ const Sidenav = () => {
           </Link>
         </nav>
         <hr className="border-none h-[1px] bg-zinc-400" />
-        <nav className="flex flex-col text-zinc-400 text-xl gap-3">
+
+       
+
+
+
+        {/* commenter Website Information */}
+
+        {/* <nav className="flex flex-col text-zinc-400 text-xl gap-3">
           <h1 className="text-white  text-xl m-1">Website Information</h1>
           <Link
             className="hover:bg-[#09e0f3] hover:text-white duration-300 
@@ -56,8 +63,8 @@ rounded-md p-5"
 rounded-md p-5"
           >
             <i className="mr-2 ri-account-box-fill"></i>Contact Us
-          </Link>
-        </nav>
+          </Link> 
+        </nav>*/}
       </div>
     </>
   );
